@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>英語文法アプリ</title>
+</head>
+<body>
+
+    <h1>英語文法アプリ</h1>
+
+    <button onclick="showPresentPerfect()">
+    現在完了
+</button>
+
+    <button onclick="showUnit('passive')">
+    受動態
+    </button>
+
+    <div id="content"></div>
+
+    <script>
+
+const grammarData = {
+    presentPerfect: [
+        {
+            english: "I have visited Kyoto three times.",
+            japanese: "私は京都を3回訪れたことがあります。"
+        },
+        {
+            english: "She has just finished her homework.",
+            japanese: "彼女はちょうど宿題を終えました。"
+        }
+    ],
+
+    passive: [
+        {
+            english: "English is spoken all over the world.",
+            japanese: "英語は世界中で話されています。"
+        },
+        {
+            english: "This book was written by him.",
+            japanese: "この本は彼によって書かれました。"
+        }
+    ]
+};
+
+function showPresentPerfect() {
+
+    let html = "<h2>現在完了</h2>";
+
+    for (let i = 0; i < grammarData.presentPerfect.length; i++) {
+
+        html += `
+            <div>
+                <p>${grammarData.presentPerfect[i].english}</p>
+
+                <button onclick="showTranslation(${i})">
+                    訳を見る
+                </button>
+
+                <p id="translation${i}"></p>
+            </div>
+            <hr>
+        `;
+    }
+
+    document.getElementById("content").innerHTML = html;
+}
+
+function showTranslation(index) {
+    document.getElementById(`translation${index}`).textContent =
+        grammarData.presentPerfect[index].japanese;
+}
+
+</script>
+
+</body>
+</html>

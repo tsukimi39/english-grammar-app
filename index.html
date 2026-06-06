@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>形で覚える例文集！</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="title">
+    <img src="pannezu.PNG" alt="logo">
+    <h1>形で覚える例文集！</h1>
+    </div>
+
+<button onclick="showGrade('junior1')">中1</button>
+<button onclick="showGrade('junior2')">中2</button>
+<button onclick="showGrade('junior3')">中3</button>
+
+<button onclick="mode='enToJa'; showUnit(currentUnit)">英→日</button>
+<button onclick="mode='jaToEn'; showUnit(currentUnit)">日→英</button>
+
+<button onclick="showQuizMode()">受験用！</button>
+
+<div id="menu"></div>
+<div id="content"></div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+
+
+</body>
+</html>
