@@ -15,7 +15,7 @@ const unitTitles = {
     thisOrThat: "this / that",
     questionWord1: "疑問詞1",
     questionWord2: "疑問詞2",
-    thirdPerson: "三人称単数",
+    thirdPerson: "動詞のS(三単現)",
     imperative: "命令文",
     pastTense: "過去形",
     continuous: "進行形",
