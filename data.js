@@ -2,7 +2,7 @@ const gradeUnits = {
     junior1: ["beVerb","DoyouAreyouQues","thisOrThat","questionWord1","questionWord2",
               "imperative","pastTense","pronouns","thirdPerson","continuous","thereIsAre"],
     junior2: ["futureTense","modalVerbs","whenIfBecause","that","infinitive","itsForTo",
-              "gerund","qWordTo","comparison","passive"],
+              "gerund","infAndGerund","qWordTo","comparison","passive"],
     junior3: ["presentPerfect","wantAskTell","bareInfinitive","indirectQuestions",
               "postModification","relativePronouns","subjunctive"]
 };
@@ -15,11 +15,11 @@ const unitTitles = {
     thisOrThat: "this / that",
     questionWord1: "疑問詞1",
     questionWord2: "疑問詞2",
-    thirdPerson: "動詞のS(三単現)",
+    thirdPerson: "動詞のS",
     imperative: "命令文",
     pastTense: "過去形",
     continuous: "進行形",
-    thereIsAre: "There is / There are",
+    thereIsAre: "There is / are",
     futureTense: "未来形",
     modalVerbs: "助動詞",
     whenIfBecause: "when / if / because",
@@ -27,16 +27,49 @@ const unitTitles = {
     infinitive: "不定詞",
     itsForTo: "It's...for...to...",
     gerund: "動名詞",
+    infAndGerund: "不定詞と動名詞の違い",
     qWordTo: "疑問詞 + to",
     comparison: "比較",
     passive: "受動態",
     presentPerfect: "現在完了",
-    wantAskTell: "want / ask / tell + 人 + to",
+    wantAskTell: "want / ask / tell",
     bareInfinitive: "原形不定詞",
     indirectQuestions: "間接疑問文",
     postModification: "後置修飾",
     relativePronouns: "関係代名詞",
-    subjunctive: "仮定法"    
+    subjunctive: "仮定法"
+};
+
+const unitPoints = {
+    beVerb: "Be動詞の使い分けを知ろう。主語に注目",
+    DoyouAreyouQues: "Do you~?とAre you~?の違いを見つけて。何を訊いてる？",
+    pronouns: "Iは「私」じゃなくて「私は」。他も同じように覚えよう!",
+    thisOrThat: "this that/these thoseの違いは？",
+    questionWord1: "何を訊かれてる？what,where,when,who編",
+    questionWord2: "何を訊かれてる？why,whose,which,how編",
+    thirdPerson: "主語が単数のとき、現在形の動詞にはsが付きます",
+    imperative: "主語が無いって気づいた？",
+    pastTense: "edだけじゃない！不規則動詞もあるよ",
+    continuous: "文の形の共通点を見つけて",
+    thereIsAre: "thereは主語じゃないって気づいた？",
+    futureTense: "willとbe going toの違いは？",
+    modalVerbs: "助動詞の次、「動詞の形」に共通点があるね？",
+    whenIfBecause: "前後入れ替えた「書き換え」もできるようにね",
+    that: "thatの後の文の形を見てみよう",
+    infinitive: "その「to」どう訳す？推測しよう",
+    itsForTo: "訳の共通点を見つけよう",
+    gerund: "「～すること」 ",
+    infAndGerund: "どっち使うかで意味が変わる場合があるよ<br>不定詞は未来向き、動名詞は過去向きの意味になることが多い",
+    qWordTo: "不定詞がくっついてるね",
+    comparison: "最上級はtheを忘れないで！！！",
+    passive: "文の形の共通点を覚えよう",
+    presentPerfect: "その「完了形」どう訳す？3種類の訳があるよ",
+    wantAskTell: "文の形の共通点を見つけよう",
+    bareInfinitive: "toがない不定詞もあるんやで",
+    indirectQuestions: "疑問詞の後ろの文の共通点を見つけよう",
+    postModification: "「説明する言葉・される言葉」の位置関係を見てみよう",
+    relativePronouns: "2種類の文があるよ。関係代名詞の後ろの文の形を見てみよう",
+    subjunctive: "「今」ありえないことを想像する"
 };
 
 
@@ -364,7 +397,27 @@ const grammarData = {
     {
         english: "The car is hers.",
         japanese: "その車は彼女のものです。"
-    }
+    },
+    {
+        english: "Do you have any questions?",
+        japanese: "質問はある？"
+    },
+    {
+        english: "They have some questions.",
+        japanese: "彼らはいくつか質問があります。"
+    },
+    {
+        english: "【発展編】Both of them speak English, but neither speaks French.",
+        japanese: "【発展編】彼らはどちらも英語を話しますが、誰もフランス語を話しません。"
+    },
+    {
+        english: "【発展編】Each of the boys has his own room.",
+        japanese: "【発展編】男の子それぞれは自分の部屋がある。"
+    },
+    {
+        english: "【発展編】Do you know either of the sisters?",
+        japanese: "【発展編】姉妹のどちらかを知っていますか？"
+    },
 ],
 
         questionWord1: [
@@ -584,10 +637,6 @@ const grammarData = {
         japanese: "窓を開けて。"
     },
     {
-        english: "Close the door.",
-        japanese: "ドアを閉めて。"
-    },
-    {
         english: "Listen to me.",
         japanese: "私の話を聞いて。"
     },
@@ -612,12 +661,20 @@ const grammarData = {
         japanese: "授業中に話さないで。"
     },
     {
-        english: "Study hard.",
-        japanese: "一生懸命勉強しなさい。"
-    },
-    {
         english: "Let’s go shopping.",
         japanese: "買い物に行こう。"
+    },
+    {
+        english: "Let’s not go shopping.",
+        japanese: "買い物には行かないでおこう。"
+    },
+    {
+        english: "【発展編】please help yourself.",
+        japanese: "【発展編】ご自由にどうぞ。"
+    },
+    {
+        english: "【発展編】please help yourself to eat cookies.",
+        japanese: "【発展編】(クッキーを)自由にお取りください。"
     }
 ],
 
@@ -693,12 +750,12 @@ const grammarData = {
         japanese: "私は今英語を勉強しています。"
     },
     {
-        english: "She is playing the piano.",
-        japanese: "彼女はピアノを弾いています。"
+        english: "Is she playing the piano?",
+        japanese: "彼女はピアノを弾いていますか？"
     },
     {
-        english: "He is watching TV.",
-        japanese: "彼はテレビを見ています。"
+        english: "Is he watching TV?",
+        japanese: "彼はテレビを見ていますか？"
     },
     {
         english: "They are playing soccer.",
@@ -719,12 +776,12 @@ const grammarData = {
         japanese: "彼女はその時ピアノを弾いていました。"
     },
     {
-        english: "He was watching TV last night.",
-        japanese: "彼は昨夜テレビを見ていました。"
+        english: "Was he watching TV last night?",
+        japanese: "彼は昨夜テレビを見ていましたか？"
     },
     {
-        english: "They were playing soccer at that time.",
-        japanese: "彼らはその時サッカーをしていました。"
+        english: "Were they playing soccer at that time?",
+        japanese: "彼らはその時サッカーをしていましたか？"
     },
     {
         english: "We were eating dinner at that time.",
@@ -746,24 +803,16 @@ const grammarData = {
         japanese: "カバンにペンはありません。"
     },
     {
-        english: "There was a problem yesterday.",
-        japanese: "昨日問題がありました。"
+        english: "Was there a problem yesterday?",
+        japanese: "昨日問題がありましたか？"
     },
     {
         english: "There are many students in the classroom.",
         japanese: "教室にたくさんの生徒がいます。"
     },
     {
-        english: "There was a big tree here.",
-        japanese: "ここに大きな木がありました。"
-    },
-    {
         english: "There are two apples on the table.",
         japanese: "テーブルの上にリンゴが2つあります。"
-    },
-    {
-        english: "There weren’t any chairs in the room.",
-        japanese: "部屋にイスはありませんでした。"
     },
     {
         english: "There is a book on the desk.",
@@ -775,11 +824,15 @@ const grammarData = {
     },
     {
         english: "There aren’t any chairs in the room.",
-        japanese: "部屋にイスはありません。"
+        japanese: "部屋にイスは(1つも)ありません。"
     },
     {
         english: "There weren’t any dogs in the park.",
-        japanese: "公園に犬はいませんでした。"
+        japanese: "公園に犬は(1つも)いませんでした。"
+    },
+    {
+        english: "【発展編】There were several animals living in the forest.",
+        japanese: "【発展編】森にいくつかの動物が住んでいました。"
     }
 ],
 
@@ -801,16 +854,16 @@ const grammarData = {
         japanese: "彼女は放課後テニスをします。"
     },
     {
-        english: "She will not come here.",
-        japanese: "彼女はここに来ません。"
-    },
-    {
         english: "Will she join the club?",
         japanese: "彼女は部活に入りますか？"
     },
     {
-        english: "It will rain tomorrow.",
-        japanese: "明日は雨が降るでしょう。"
+        english: "There will be a meeting tomorrow afternoon.",
+        japanese: "明日の午後には会議があります。"
+    },
+    {
+        english: "There will be many students there tomorrow.",
+        japanese: "明日、そこには多くの学生がいるだろう。"
     },
     {
         english: "It will not be cold tomorrow.",
@@ -963,16 +1016,16 @@ const grammarData = {
 
     // used to
     {
-        english: "I used to play soccer.",
-        japanese: "私は昔サッカーをしていました。"
+        english: "【発展編】I used to play soccer.",
+        japanese: "【発展編】私は昔サッカーをしていました。"
     },
     {
-        english: "I did not use to like math.",
-        japanese: "私は昔数学が好きではありませんでした。"
+        english: "【発展編】I did not use to like math.",
+        japanese: "【発展編】私は昔数学が好きではありませんでした。"
     },
     {
-        english: "Did you use to live here?",
-        japanese: "あなたは昔ここに住んでいましたか？"
+        english: "【発展編】Did you use to live here?",
+        japanese: "【発展編】あなたは昔ここに住んでいましたか？"
     }
 ],
 
@@ -1005,11 +1058,11 @@ const grammarData = {
         japanese: "一生懸命勉強すれば、テストに合格します。"
     },
     {
-        english: "If I have time, I will go there.",
+        english: "I will go there, if I have time.",
         japanese: "時間があれば、そこへ行きます。"
     },
     {
-        english: "If he comes, I will be happy.",
+        english: "I will be happy if he comes.",
         japanese: "彼が来れば、私はうれしいです。"
     },
 
@@ -1052,6 +1105,10 @@ const grammarData = {
     {
         english: "I believe that she can win.",
         japanese: "彼女は勝てると信じています。"
+    },
+    {
+        english: "【発展編】She said that that was her bag.",
+        japanese: "【発展編】彼女はそれが彼女の鞄だと言いました。"
     }
 ],
 
@@ -1108,6 +1165,18 @@ const grammarData = {
     {
         english: "He came here to see me.",
         japanese: "彼は私に会うためにここに来ました。"
+    },
+    {
+        english: "【発展編】I told my brother not to be late.",
+        japanese: "【発展編】私は兄に遅れないように言いました。"
+    },
+    {
+        english: "【発展編】He decided not to go to the party.",
+        japanese: "【発展編】彼はパーティーに行かないことに決めた。"
+    },
+    {
+        english: "【発展編】This tea is too hot to drink.",
+        japanese: "【発展編】このお茶は熱すぎて飲めない。"
     }
 ],
 
@@ -1171,6 +1240,33 @@ const grammarData = {
         japanese: "私は英語を学ぶことに興味があります。"
     }
 ],
+
+    infAndGerund: [
+        {
+            english: "Remember to lock the door.",
+            japanese: "ドアを施錠することを忘れないで(これからのこと)。"
+        },
+        {
+            english: "I remember locking the door.",
+            japanese: "私はドアを施錠したことを覚えている(過去のこと)。"
+        },
+        {
+            english: "Don't forget to bring your notebook.",
+            japanese: "ノートを持ってくるのを忘れないで(これからのこと)。"
+        },
+        {
+            english: "I'll never forget meeting her.",
+            japanese: "私は彼女に会ったことを決して忘れません。(過去のこと)"
+        },
+        {
+            english: "I regret to tell you the news.",
+            japanese: "残念ながらニュースをお伝えします。(これからのこと)"
+        },
+        {
+            english: "I regret telling him the secret.",
+            japanese: "私は彼に秘密を話したことを後悔している。(過去のこと)"
+        }
+    ],
 
         qWordTo: [
     {
@@ -1274,6 +1370,22 @@ const grammarData = {
     {
         english: "He is the worst student in the class.",
         japanese: "彼はクラスで一番悪い生徒です。"
+    },
+    {
+        english: "Tom is as tall as Ken.",
+        japanese: "トムはケンと同じくらい背が高い。"
+    },
+    {
+        english: "This book is as interesting as that one.",
+        japanese: "この本はあれと同じぐらい面白い。"
+    },
+    {
+        english: "Tom is not as tall as Ken.",
+        japanese: "トムはケンほど背が高くない。"
+    },
+    {
+        english: "This book is not as interesting as that one.",
+        japanese: "この本はあれほど面白くはない。"
     }
 ],
 
@@ -1317,6 +1429,14 @@ const grammarData = {
     {
         english: "The cake was eaten by the children.",
         japanese: "ケーキは子どもたちに食べられました。"
+    },
+    {
+        english: "【発展編】The bridge was built more than one hundred years ago.",
+        japanese: "【発展編】その橋は100年以上前に建設されました。"
+    },
+    {
+        english: "【発展編】We were surprised at the result",
+        japanese: "【発展編】私たちはその結果に驚いた。"
     }
 ],
 
@@ -1602,23 +1722,23 @@ const grammarData = {
 
     // 目的格（省略OK）
     {
-        english: "The boy I met yesterday is Tom.",
+        english: "The boy (who) I met yesterday is Tom.",
         japanese: "昨日会った少年はトムです。"
     },
     {
-        english: "The book I bought is interesting.",
+        english: "The book (which) I bought is interesting.",
         japanese: "私が買った本は面白いです。"
     },
     {
-        english: "The girl I like is kind.",
+        english: "The girl (who) I like is kind.",
         japanese: "私が好きな女の子は優しいです。"
     },
     {
-        english: "The movie we saw was great.",
+        english: "The movie (which) we saw was great.",
         japanese: "私たちが見た映画は最高でした。"
     },
     {
-        english: "Is this the book you were reading?",
+        english: "Is this the book (which) you were reading?",
         japanese: "これはあなたが読んでいた本ですか？"
     }
 ],
@@ -1661,6 +1781,3 @@ const grammarData = {
     }
 ]
 };
-
-
-    

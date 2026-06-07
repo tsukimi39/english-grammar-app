@@ -1,14 +1,14 @@
 let currentUnit = null;
+let mode = "enToJa";
 
-let mode = "enToJa"; // or "jaToEn"
+// ★ クイズ用グローバル変数
+let quizQuestions = [];
 
 
 function showGrade(grade) {
-
     let html = "";
 
     for (let unit of gradeUnits[grade]) {
-
         html += `
             <button onclick="showUnit('${unit}')">
                 ${unitTitles[unit]}
@@ -17,37 +17,36 @@ function showGrade(grade) {
     }
 
     document.getElementById("menu").innerHTML = html;
-
     document.getElementById("content").innerHTML = "";
 }
 
 function showUnit(unitName) {
-
     currentUnit = unitName;
 
-    let html = `<h2>${unitTitles[unitName]}</h2>`;
+    let html = `
+        <p class="point">${unitPoints[unitName]}</p>
+    `;
 
     for (let i = 0; i < grammarData[unitName].length; i++) {
-
         const item = grammarData[unitName][i];
 
         html += `
-        <div>
-            <p>${mode === "enToJa" ? item.english : item.japanese}</p>
+            <div>
+                <p>${mode === "enToJa" ? item.english : item.japanese}</p>
 
-            <p>
-                <span
-                    id="toggle${i}"
-                    class="translation-link"
-                    onclick="showTranslation(${i})"
-                >
-                    ${mode === "enToJa" ? "訳を見る" : "英語を見る"}
-                </span>
+                <p>
+                    <span
+                        id="toggle${i}"
+                        class="translation-link"
+                        onclick="showTranslation(${i})"
+                    >
+                        ${mode === "enToJa" ? "訳を見る" : "英語を見る"}
+                    </span>
 
-                <span id="translation${i}"></span>
-            </p>
-        </div>
-        <hr>
+                    <span id="translation${i}"></span>
+                </p>
+            </div>
+            <hr>
         `;
     }
 
@@ -106,22 +105,23 @@ function getRandomQuestions(count = 3) {
 }
 
 function showQuizMode() {
+    quizQuestions = getRandomQuestions(3);
 
-    let questions = getRandomQuestions(3);
+    let html = "<h2>全単元からランダム出題</h2>";
 
-    let html = "<h2>全単元からランダムで出題されます。<br>押すたびに問題が変わるよ。</h2>";
-
-    for (let i = 0; i < questions.length; i++) {
-
-        let q = questions[i];
+    for (let i = 0; i < quizQuestions.length; i++) {
+        const q = quizQuestions[i];
 
         html += `
             <div>
                 <p>${mode === "enToJa" ? q.english : q.japanese}</p>
 
                 <p>
-                    <span id="quizAns${i}" class="translation-link"
-                        onclick="showQuizAnswer(${i}, '${q.english}', '${q.japanese}')">
+                    <span
+                        id="quizBtn${i}"
+                        class="translation-link"
+                        onclick="showQuizAnswer(${i})"
+                    >
                         答えを見る
                     </span>
 
@@ -135,23 +135,23 @@ function showQuizMode() {
     document.getElementById("content").innerHTML = html;
 }
 
-function showQuizAnswer(index, en, ja) {
+function showQuizAnswer(index) {
+    const q = quizQuestions[index];
 
     const text = document.getElementById(`quizText${index}`);
-    const btn = document.getElementById(`quizAns${index}`);
+    const btn = document.getElementById(`quizBtn${index}`);
 
-    if (text.textContent === "") {
+    const isEmpty = !text.textContent.trim();
 
+    if (isEmpty) {
         if (mode === "enToJa") {
-            text.textContent = "　" + ja;
+            text.textContent = "　" + q.japanese;
         } else {
-            text.textContent = "　" + en;
+            text.textContent = "　" + q.english;
         }
 
         btn.textContent = "隠す";
-
     } else {
-
         text.textContent = "";
         btn.textContent = "答えを見る";
     }
